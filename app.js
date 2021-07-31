@@ -16,6 +16,7 @@ app.use('/', routes)
 app.use('/api', routes)
 
 
+
 app.get('*', (req,res) =>{
     res.status(404).send('Sorry...404 not found')
 })
