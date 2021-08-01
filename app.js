@@ -4,7 +4,7 @@ require('./utils/db')
 const process = require('process')
 
 const routes = require('./routes/landings')
-
+const neasRoutes = require('./routes/neas')
 
 const app = express()
 const port = process.env.PORT
@@ -14,7 +14,7 @@ app.use(express.json())
 
 app.use('/', routes)
 app.use('/api', routes)
-
+app.use('/api', neasRoutes)
 
 
 app.get('*', (req,res) =>{
