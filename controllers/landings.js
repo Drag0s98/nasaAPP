@@ -8,7 +8,7 @@ const landings = {
         let landings;
         //console.log(req.query.minimun_mass);
         let minimun_mass = parseInt(req.query.minimun_mass)
-        console.log(minimun_mass);
+        //console.log(minimun_mass);
         try {
             landings = await Landings.find()
             let selected = landings.map((param) => {
@@ -54,13 +54,12 @@ const landings = {
     byClass: async (req, res) => {
         let landings
         let takeClass = req.params.class
-
         try {
             landings = await Landings.find()
             let array = await landings.map((param) => {
                 let classes = param.recclass
                 let name = param.name
-                console.log(takeClass);
+                //console.log(takeClass);
                 if(classes === takeClass){
                     return "The names is " + name + "and the class is: " + classes
                 }
@@ -71,6 +70,18 @@ const landings = {
             res.status(400).json({
                 "error": error.message
             })
+        }
+    },
+    byDate: async (req, res) => {
+        console.log(req);
+        let takeDate = req.params.from
+        try {
+            res.status(200).send(takeDate)
+        } catch (error) {
+            res.status(400).json({
+                "error": error.message
+            })
+            
         }
     }
 
