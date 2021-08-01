@@ -1,11 +1,10 @@
 const router = require('express').Router()
 const pages = require('../controllers/landings')
 
-const date = new Date()
 
-router.get('/api/astronomy/landings:minimun_mass?', pages.homeLandings)
+router.get('/api/astronomy/landings:minimum_mass?', pages.homeLandings)
 router.get('/api/astronomy/landings/mass/:mass?', pages.specificMass)
 router.get('/astronomy/landings/class/:class?', pages.byClass)
-router.get(`/astronomy/landings?from=${date.toISOString()}`, pages.byDate)
+router.get(`/astronomy/landings?from=1960`, pages.byDate)
 
 module.exports = router

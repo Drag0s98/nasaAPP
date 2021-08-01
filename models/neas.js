@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 
+
 let neasSchema = new mongoose.Schema({
 
     designation:String,
@@ -14,4 +15,4 @@ let neasSchema = new mongoose.Schema({
     orbit_class:String
 })
 
-module.export = mongoose.model('Neas', neasSchema)
+module.exports = mongoose.model('Neas', neasSchema)

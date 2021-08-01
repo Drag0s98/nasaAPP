@@ -2,20 +2,19 @@ const { parse } = require('dotenv');
 const { json } = require('express');
 const Landings = require('../models/landings')
 
-
 const landings = {
     homeLandings: async (req, res) => {
         let landings;
-        //console.log(req.query.minimun_mass);
-        let minimun_mass = parseInt(req.query.minimun_mass)
-        //console.log(minimun_mass);
+        //console.log(req.query.minimum_mass);
+        let minimum_mass = parseInt(req.query.minimum_mass)
+       // console.log(minimum_mass);
         try {
             landings = await Landings.find()
             let selected = landings.map((param) => {
                 let mass = parseInt(param.mass)
                 let name = param.name
                 //  console.log(mass);
-                if (mass >= minimun_mass) {
+                if (mass >= minimum_mass) {
                     return "The names is " + name + "and mass is: " + mass
                 }
             })
@@ -73,10 +72,12 @@ const landings = {
         }
     },
     byDate: async (req, res) => {
-        console.log(req);
-        let takeDate = req.params.from
+        console.log(req.params);
+        console.log('hola');
         try {
-            res.status(200).send(takeDate)
+
+            res.status(200).json('hola')
+            
         } catch (error) {
             res.status(400).json({
                 "error": error.message

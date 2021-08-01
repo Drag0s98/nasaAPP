@@ -6,6 +6,7 @@ mongoose.connect(process.env.DATABASE_URL, { //Se conecta a la url del .env
     useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true,
+
 });
 const db = mongoose.connection;
 db.on("error", error => console.log(error)); //Si hay error se lanza el error
