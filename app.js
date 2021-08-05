@@ -3,18 +3,24 @@ require('dotenv').config()
 require('./utils/db')
 const process = require('process')
 
-const routes = require('./routes/landings')
+const landingRoutes = require('./routes/landings')
 const neasRoutes = require('./routes/neas')
+const usersRoutes = require('./routes/users')
+
 
 const app = express()
 const port = process.env.PORT
 
 
 app.use(express.json())
+app.use(express.urlencoded({ extended:false }))
 
-app.use('/', routes)
-app.use('/api', routes)
-app.use('/api', neasRoutes)
+app.use('/', landingRoutes, neasRoutes, usersRoutes)
+app.use('/api/astronomy', landingRoutes, neasRoutes, usersRoutes)
+
+
+
+
 
 
 app.get('*', (req,res) =>{
@@ -22,5 +28,6 @@ app.get('*', (req,res) =>{
 })
 
 app.listen(port, () =>{
-    console.log(`Example app listening at http://localhost:${port}`);
+    console.log(`Landings example app listening at http://localhost:${port}/api/astronomy/landings`);
+    console.log(`Nean's example app listening at http://localhost:${port}/api/astronomy/neas`);
 })

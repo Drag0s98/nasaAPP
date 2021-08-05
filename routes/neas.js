@@ -1,7 +1,8 @@
 const router = require('express').Router()
-const pages = require('../Controllers/neas')
+const pages = require('../controllers/neas')
 
-router.get('/api/astronomy/neas?class=?', pages.byClass)
+router.get('/neas', pages.routeBase)
+router.get('/neas?class:', pages.byClass) //No funciona
 
 
 module.exports = router
