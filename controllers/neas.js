@@ -30,7 +30,13 @@ const neas = {
         
 
        
+    },
+    byDateNea: async (req,  res) => {
+        let neas;
+        console.log('hola');
+        console.log(req.query);
     }
+
 }
 
 

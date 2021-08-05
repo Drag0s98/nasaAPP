@@ -5,7 +5,7 @@ const process = require('process')
 
 const landingRoutes = require('./routes/landings')
 const neasRoutes = require('./routes/neas')
-
+const usersRoutes = require('./routes/users')
 
 
 const app = express()
@@ -14,9 +14,10 @@ const port = process.env.PORT
 
 app.use(express.json())
 
-app.use('/', landingRoutes, neasRoutes)
-app.use('/api/astronomy/landings', landingRoutes)
-app.use('/api/astronomy/neas', neasRoutes)
+app.use('/', landingRoutes, neasRoutes, usersRoutes)
+app.use('/api/astronomy', landingRoutes, neasRoutes, usersRoutes)
+
+
 
 
 
