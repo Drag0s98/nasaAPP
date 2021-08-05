@@ -2,7 +2,7 @@ const router = require('express').Router()
 const pages = require('../controllers/landings')
 
 
-//router.get('/api/astronomy/landings:minimum_mass?', pages.homeLandings) Preguntar en clase
+router.get('landings', pages.homeLandings)
 router.get('/landings/mass/:mass?', pages.specificMass)
 router.get('/landings/class/:class?', pages.byClass)
 router.get('/landings:from?', pages.byDate)

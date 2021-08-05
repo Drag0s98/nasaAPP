@@ -13,6 +13,7 @@ const port = process.env.PORT
 
 
 app.use(express.json())
+app.use(express.urlencoded({ extended:false }))
 
 app.use('/', landingRoutes, neasRoutes, usersRoutes)
 app.use('/api/astronomy', landingRoutes, neasRoutes, usersRoutes)
