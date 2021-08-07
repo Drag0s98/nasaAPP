@@ -4,7 +4,7 @@ const Users = require('../models/users')
 const users = {
     registerUser: async (req, res) => {
         let user = new Users(req.body)
-        console.log('holaaaa');
+        console.log("*****User created*****");
         try {
             const new_user = await user.save()
             console.log(new_user);
@@ -27,7 +27,6 @@ const users = {
         try {
             let users = await Users.find()
             let user = users.map((param) => {
-                // console.log(param);
                 let affiliatedNum = param.affiliatedNumber
                 let birthdate = param.birthdate
                 let name = param.name
@@ -140,7 +139,29 @@ const users = {
     },
     deleteUser: async (req, res) => {
         let takeNum = parseInt(req.params.num)
-        
+        let users = await Users.find()
+        console.log(users.flat().deleted);
+        try {
+            users.map((param) => {
+                if (param.deleted == true) {
+                    Users.findOneAndRemove({ affiliatedNumber: takeNum }, (err, user) => {
+                        if (err) res.status(500).send({ message: `Error al borrar el usuario ${err}` })
+                        try {
+                            user.remove(err => {
+                                res.status(200).send({ message: 'El usuario ha sido borrado' })
+                            })
+                        } catch (err) {
+                            res.status(500).send({ message: `Error al borrar el usuario ${err}` })
+
+                        }
+                    })
+                }
+            })
+        } catch (error) {
+            res.status(400).json({
+                "error": error.message
+            })
+        }
     }
 }
 module.exports = users;
