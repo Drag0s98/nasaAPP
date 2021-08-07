@@ -6,7 +6,7 @@ let userSchema = new mongoose.Schema({
         required: true
     },
     nickname: String,
-    affiliatedNumber:{
+    affiliatedNumber: {
         type: Number,
         required: true,
         unique: true
@@ -21,3 +21,20 @@ let userSchema = new mongoose.Schema({
 })
 
 module.exports = mongoose.model('Users', userSchema)
+
+
+
+/*
+{
+  "name":"Dragos",
+  "nickname": "xJaki91x",
+  "affiliatedNumber": 12345,
+  "affiliationDate": "2021-08-07",
+  "occupation": "nini",
+  "birthdate": "1998-11-16",
+  "deleted": false,
+  "astronomicalPoints": 50,
+  "neasDiscovered": ["lorem"],
+  "necsDiscovered": ["ipsun"]
+}
+*/
