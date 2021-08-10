@@ -14,19 +14,36 @@ const pages = {
     },
     landing: async (req, res) => {
         let data = await Landings.find()
-        // console.log(landings);
         res.status(200).render('landings', { jsStringify, data })
-        
+
+
+    },
+    sendParams: async (req, res) => {
+        try {
+            let data = await Landings.find()
+            let byMass = req.body.mass
+            let byClass = req.body.class
+            if (byMass.length > 0 || byClass.length > 0) {
+                let getClass = await Landings.find({ recclass: byClass })
+                let getMass = await Landings.find({ mass: byMass })
+                res.status(200).render('landings', { jsStringify, getClass, getMass })
+            } else {
+                res.status(200).render('landings', { jsStringify, data })
+            }
+        } catch (error) {
+            res.status(400).send(`Un error inesperado ha ocurrido ${error}`)
+        }
 
     }
+
+
+
 }
+
 
 module.exports = pages;
 
-// var marker = L.marker([#{lat[0]}, #{long[0]}]).addTo(mymap);
-// var marker = L.marker([#{nose.reclat}, #{nose.reclong}]).addTo(mymap);
-/* 
-    each n in filtered
-    let marker = L.marker([#{n.reclat}, #{n.reclong}]).addTo(mymap)
-40.469321216586145, -3.3801329355490113
-    */
+
+
+
+
