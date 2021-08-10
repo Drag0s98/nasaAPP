@@ -2,7 +2,7 @@ const router = require('express').Router()
 const pages = require('../controllers/users')
 
 
-router.post('/:guild?', pages.registerUser)
+// router.post('/:guild?', pages.registerUser)
 
 router.get('/guild/:num', pages.getBase)
 router.get('/guild/:num/neas', pages.getNeas)
