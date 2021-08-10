@@ -1,0 +1,49 @@
+doctype html
+html
+  head
+    title SafeAlertTutorial.Website
+
+    link(rel='stylesheet', href='https://unpkg.com/leaflet@1.4.0/dist/leaflet.css', integrity='sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==', crossorigin='')
+    script(src='https://unpkg.com/leaflet@1.7.1/dist/leaflet.js', integrity='sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==', crossorigin='')
+
+  body
+    form(method='POST', action='landing')
+        input(type='text', placeholder='1000', name='mass')
+        button(type='submit') Filtrar por peso
+        br
+        br
+        input(type='text', placeholder='L6', name='class')
+        button(type='submit') Filtrar por clase
+    br
+    #mapid(style='width: 600px; height: 400px;')
+      script.
+        let data = !{jsStringify(data)};
+        let data2 = !{jsStringify(getClass)};
+        let data3 = !{jsStringify(getMass)};
+        //sets the view to the inital area
+        var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+          attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+          maxZoom: 18,
+          id: 'mapbox/satellite-streets-v11',
+          accessToken: 'pk.eyJ1IjoiZHJhZzBzOTgiLCJhIjoiY2tyNjF4anIwMDF2NzJubWF5bG92Y2J2ZiJ9.Rb7RFUVViJK1euBDQ-jnFA'
+        }).addTo(mymap)
+        if (data2 == undefined && data3 == undefined || data2.length > 0 && data3.length > 0 ){
+          for(let n of data){
+            var marker = L.marker([n.reclat, n.reclong]).addTo(mymap)
+            var popUpHTML = `${n.name}<br>${n.recclass}<br>${n.mass}`;
+            marker.bindPopup(popUpHTML).openPopup()
+          }
+        }
+        else if(data3 != undefined && data3.length > 0 || data2 != undefined && data2.length > 0 ){
+          for(let n of data3){
+            var marker = L.marker([n.reclat, n.reclong]).addTo(mymap)
+            var popUpHTML = `${n.name}<br>${n.recclass}<br>${n.mass}gr`;
+            marker.bindPopup(popUpHTML).openPopup()
+          } 
+          for(let n of data2){
+            var marker = L.marker([n.reclat, n.reclong]).addTo(mymap)
+            var popUpHTML = `${n.name}<br>${n.recclass}<br>${n.mass}gr`;
+            marker.bindPopup(popUpHTML).openPopup()
+          } 
+        }

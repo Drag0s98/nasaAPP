@@ -6,16 +6,20 @@ const process = require('process')
 const landingRoutes = require('./routes/landings')
 const neasRoutes = require('./routes/neas')
 const usersRoutes = require('./routes/users')
+const viewRoutes = require('./routes/views')
 
 
 const app = express()
 const port = process.env.PORT
 
+app.set('view engine', 'pug')
+app.set('views', './views')
+
 
 app.use(express.json())
 app.use(express.urlencoded({ extended:false }))
 
-app.use('/', landingRoutes, neasRoutes, usersRoutes)
+app.use('/', landingRoutes, neasRoutes, usersRoutes, viewRoutes)
 app.use('/api/astronomy', landingRoutes, neasRoutes, usersRoutes)
 
 
