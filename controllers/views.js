@@ -34,7 +34,17 @@ const pages = {
             res.status(400).send(`Un error inesperado ha ocurrido ${error}`)
         }
 
+    },
+    register: async (req, res) => {
+        try{
+            let msj = 'Pagina de registro'
+            res.status(200).render('register', { msj })
+        }catch(error){
+            res.status(400).send(error)
+        }
+        
     }
+   
 
 
 

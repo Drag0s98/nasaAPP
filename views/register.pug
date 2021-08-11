@@ -1,0 +1,21 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        style
+            include ../styles/style.css
+        title NasaApi
+    body 
+        p=msj
+        form(method='post', action='search')
+            label(for='name') Introduce un nombre:
+            input(type='text', name='name')
+            label(for='nickname') Introduce un nickname
+            input(type='text', name='nickname')
+            label(for='ocupation') Introduce tu ocupacion
+            input(type='text', name='ocupation')
+            label(for='birthdate') Introduce tu fecha de cumplea&ntilde;os
+            input(type='text', name='birthdate')
+            input(type='submit', placeholder='Enviar')
