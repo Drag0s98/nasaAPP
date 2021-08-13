@@ -9,7 +9,9 @@ html(lang="en")
         title NasaApi
     body 
         p=msj
-        form(method='post', action='search')
+        br
+        h2(class='errMsj')=errMsj
+        form(method='post', action='register')
             label(for='name') Introduce un nombre:
             input(type='text', name='name')
             label(for='nickname') Introduce un nickname
@@ -18,4 +20,6 @@ html(lang="en")
             input(type='text', name='ocupation')
             label(for='birthdate') Introduce tu fecha de cumplea&ntilde;os
             input(type='text', name='birthdate')
+            label(for='affiliatedNumber') Introduce un numero de afiliacion
+            input(type='text', name='affiliatedNumber')
             input(type='submit', placeholder='Enviar')

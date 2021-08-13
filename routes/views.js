@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const pages = require('../controllers/views')
+const pages = require('../controllers/views.js')
 
 
 router.get('/', pages.home)
@@ -9,6 +9,7 @@ router.get('/register', pages.register)
 // router.get('/edit/:num_afiliacion?')
 
 router.post('/landing', pages.sendParams)
+router.post('/register', pages.sendRegister)
 
 
 module.exports = router

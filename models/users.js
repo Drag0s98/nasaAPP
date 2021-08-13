@@ -11,13 +11,28 @@ let userSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
-    affiliationDate: Date,
+    affiliationDate: {
+        type: Date,
+        default: Date.now()
+    },
     occupation: String,
     birthdate: Date,
-    deleted: Boolean,
-    astronomicalPoints: Number,
-    neasDiscovered: [String],
-    necsDiscovered: [String]
+    deleted: {
+        type: Boolean,
+        default: false
+    },
+    astronomicalPoints: {
+        type: Number,
+        default: 0
+    },
+    neasDiscovered: {
+        type: [String],
+        default: ['0']
+    },
+    necsDiscovered:{
+        type: [String],
+        default: ['0']
+    }
 })
 
 module.exports = mongoose.model('Users', userSchema)
