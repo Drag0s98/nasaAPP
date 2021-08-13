@@ -22,3 +22,6 @@ body{
     justify-content: center;
     margin: 5px;
 }
+.errMsj{
+    background-color: red;
+}
