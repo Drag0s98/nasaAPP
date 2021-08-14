@@ -85,17 +85,17 @@ const landings = {
                 if (param.year != null) {
                     let justYear = year.slice(0, 4)
 
-                    if(justYear >= from && justYear <= to){
-                        return "The names is: " + name + " the mass is: "+ mass + "g and the year is : " + justYear
-                    }
-                    if(justYear >= from && to === undefined){
+                    if (justYear >= from && justYear <= to) {
                         return "The names is: " + name + " the mass is: " + mass + "g and the year is : " + justYear
                     }
-                    if(from === undefined && justYear <= to){
-                        return "The names is: " + name + " the mass is: "+ mass + "g and the year is : " + justYear
+                    if (justYear >= from && to === undefined) {
+                        return "The names is: " + name + " the mass is: " + mass + "g and the year is : " + justYear
+                    }
+                    if (from === undefined && justYear <= to) {
+                        return "The names is: " + name + " the mass is: " + mass + "g and the year is : " + justYear
                     }
                 }
-                
+
             })
             let filtered = array.filter((param) => { return param != null })
             res.status(200).json(filtered)

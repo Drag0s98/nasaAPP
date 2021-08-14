@@ -48,14 +48,13 @@ const pages = {
 
     },
     sendRegister: async (req, res) => {
-        console.log(req.body);
+        //  console.log(req.body);
         const regName = /[A-Z]{1}[a-z]+$/
         const regbirthDate = /([0-9]{2})\/([0-9]{2})\/([0-9]{4})/
         const regAffNum = /[0-9]{5}/
         let errMsj = 'Invalid formulary, please try again'
         try {
             if (regName.test(req.body.name) === true && regbirthDate.test(req.body.birthdate) === true && regAffNum.test(req.body.affiliatedNumber) === true) {
-                console.log("*****User created*****");
                 let user = new Users(req.body)
                 const new_user = await user.save()
                 console.log(new_user);
@@ -64,16 +63,49 @@ const pages = {
                 let data = [new_user, {
                     "users_before": users,
                 }]
-                res.status(201).json(data)
+                console.log("*****User created*****");
+                res.status(201).render('loby')
             } else {
-                res.status(200).render('register', { errMsj })
+                res.status(400).render('register', { errMsj })
             }
         } catch (error) {
             res.status(400).send('Ha ocurrido un error: ' + error)
         }
 
+    },
+    search: async (req, res) => {
+        try {
+            res.status(200).render('search')
+        } catch (error) {
+            res.status(400).send('Ha ocurrido un error ' + error)
+        }
+    },
+    postSearch: async (req, res) => {
+        let affNum = parseInt(req.body.affNum)
+        let users
+        try {
+            users = await Users.find()
+            let getUsers = users.map((param) => {
+                if (affNum === param.affiliatedNumber) {
+                    let params = [param.name, param.nickname, param.occupation, param.birthdate, param.astronomicalPoints, param.neasDiscovered, param.necsDiscovered, param.affiliationDate]
+                    return params
+                }
+            })
+            let filtered = getUsers.filter((param) => { return param != null })
+            let array = filtered.flat()
+            let name = array[0]
+            let nickname = array[1]
+            let ocupation = array[2]
+            let birthdate = array[3]
+            let points = array[4]
+            let neas = array[5]
+            let necs = array[6]
+            let affDate = array[7]
+            res.status(200).render('search', { name, nickname, ocupation, birthdate, points, neas, necs, affDate })
+        } catch (error) {
+            res.status(400).send('Ha ocurrido un error ' + error)
+        }
     }
-
 
 
 

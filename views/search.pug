@@ -1,0 +1,25 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        style
+            include ../styles/style.css
+        title NasaApi
+    body 
+        form(method='post', action='search')
+            label(for='affNum') Introduce un nombre:
+            br
+            input(type='text', name='affNum' placeholder='12345')
+            input(type='submit' placeholder='Buscar')
+        p=name
+        p=nickname
+        p=ocupation
+        p=birthdate
+        p=points
+        p=neas
+        p=necs
+        p=affDate
+
+        
