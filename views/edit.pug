@@ -1,0 +1,30 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        style
+            include ../styles/style.css
+        title NasaApi
+    body 
+        p=msj
+        br
+        h2(class='errMsj')=errMsj
+        form(method='post', action='update', class='editBox')
+            label(for='name') Introduce un nombre:
+            input(type='text', name='name', placeholder='Jhon')
+            label(for='nickname') Introduce un nickname
+            input(type='text', name='nickname', placeholder='Nick')
+            label(for='occupation') Introduce tu ocupacion
+            input(type='text', name='occupation', placeholder='Nurse')
+            label(for='birthdate') Introduce tu fecha de cumpleaños
+            input(type='text', name='birthdate', placeholder='01/01/1111')
+            label(for='neasDiscovered') Introduce tus NEA's
+            input(type='text', name='neasDiscovered', placeholder='lorem')
+            label(for='necsDiscovered') Introduce tus NEC's
+            input(type='text', name='necsDiscovered', placeholder='ipsum')
+            label(for='astronomicalPoints') Introduce tus puntos astronomicos
+            input(type='text', name='astronomicalPoints', placeholder='37')
+            input(type='hidden', value=affNum, name='id')
+            input(type='submit', placeholder='Update')

@@ -18,8 +18,6 @@ const pages = {
     landing: async (req, res) => {
         let data = await Landings.find()
         res.status(200).render('landings', { jsStringify, data })
-
-
     },
     sendParams: async (req, res) => {
         try {
@@ -36,7 +34,6 @@ const pages = {
         } catch (error) {
             res.status(400).send(`Un error inesperado ha ocurrido ${error}`)
         }
-
     },
     register: async (req, res) => {
         try {
@@ -45,7 +42,6 @@ const pages = {
         } catch (error) {
             res.status(400).send(error)
         }
-
     },
     sendRegister: async (req, res) => {
         //  console.log(req.body);
@@ -58,7 +54,6 @@ const pages = {
                 let user = new Users(req.body)
                 const new_user = await user.save()
                 console.log(new_user);
-
                 let users = await Users.find()
                 let data = [new_user, {
                     "users_before": users,
@@ -71,7 +66,6 @@ const pages = {
         } catch (error) {
             res.status(400).send('Ha ocurrido un error: ' + error)
         }
-
     },
     search: async (req, res) => {
         try {
@@ -105,10 +99,66 @@ const pages = {
         } catch (error) {
             res.status(400).send('Ha ocurrido un error ' + error)
         }
+    },
+    getUsers : async (req,res) => {
+        let users
+        let sumador = 0
+        try {
+            users = await Users.find()
+            let getId = users.map((param) => {
+                return param.affiliatedNumber 
+            })
+            let name = users.map((param) => {
+                return param.name
+            })
+            res.status(200).render('users', { getId, name, sumador })
+        } catch (error) {
+        }
+    },
+    edit: async (req, res) => {
+        let affNum = parseInt(req.params.num_afiliacion)
+        let user = await Users.find({affiliatedNumber: affNum})
+        if(user != ''){
+            res.status(200).render('edit', { affNum })
+        }else{
+            res.status(400).send('Error')
+        }
+    },
+    update: async (req,res) => {
+        const id = parseInt(req.body.id)
+        var item = {
+            name: req.body.name,
+            nickname: req.body.nickname,
+            occupation: req.body.occupation,
+            birthdate: new Date(req.body.birthdate),
+            neasDiscovered: req.body.neas,
+            necsDiscovered: req.body.necs,
+            astronomicalPoints: parseInt(req.body.astronomicalPoints)
+        }
+        try {
+            await Users.findOneAndUpdate({ affiliatedNumber: id }, item)
+            res.status(201).redirect('/users')
+        } catch (error) {
+            res.status(400).send(error)
+        }
+    }, 
+    delete: async (req, res) => {
+        let id = req.body.id
+        try{
+            await Users.findOneAndDelete({ affiliatedNumber: id}, (err, docs) => {
+                if(err){
+                    console.log(err);
+                }else{
+                    console.log(
+                        '***********Usuario borrado**********'
+                    );
+                    res.status(200).redirect('/users')
+                }
+            })
+        }catch(err){
+            res.status(400).send({ mesasge: `Error al borrar el usuario ${err}`})
+        }
     }
-
-
-
 }
 
 
