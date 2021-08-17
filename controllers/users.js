@@ -37,11 +37,14 @@ const users = {
                 let yearsOld = year - date
                 if (takeNum === affiliatedNum) {
                     return "The name is: " + name + " she/he has " + yearsOld + " years old " + " his ocupation is " + ocupation + ". " + "The affiliated number is : " + affiliatedNum + " ,have " + points + " points " + "and his affiliation date is: " + affiliatedDate
-                } else {
-                    return "The user doesn't exist, please introduce a correct affiliation number."
                 }
             })
-            res.status(200).json(user)
+            let filtered = user.filter((param) => { return param != null })
+            if (filtered != '') {
+                res.status(200).json(filtered)
+            } else {
+                res.status(200).json("The user doesn't exist, please introduce a correct affiliation number.")
+            }
         } catch (error) {
             res.status(400).json({
                 "error": error.message
@@ -57,12 +60,14 @@ const users = {
                 let userNeas = param.neasDiscovered
                 if (takeNum === affiliatedNum) {
                     return "The neas discovered of " + affiliatedNum + " its " + userNeas
-                } else {
-                    return "The user doesn't exist, pleate introduce a correct affiliation number."
                 }
-
             })
-            res.status(200).json(user)
+            let filtered = user.filter((param) => { return param != null })
+            if (filtered != '') {
+                res.status(200).json(filtered)
+            } else {
+                res.status(200).json("The user doesn't exist, please introduce a correct affiliation number.")
+            }
         } catch (error) {
             res.status(400).json({
                 "error": error.message
@@ -78,12 +83,14 @@ const users = {
                 let userNeas = param.necsDiscovered
                 if (takeNum === affiliatedNum) {
                     return "The necs discovered of " + affiliatedNum + " its " + userNeas
-                } else {
-                    return "The user doesn't exist, pleate introduce a correct affiliation number."
                 }
-
             })
-            res.status(200).json(user)
+            let filtered = user.filter((param) => { return param != null })
+            if (filtered != '') {
+                res.status(200).json(filtered)
+            } else {
+                res.status(200).json("The user doesn't exist, please introduce a correct affiliation number.")
+            }
         } catch (error) {
             res.status(400).json({
                 "error": error.message
@@ -99,12 +106,14 @@ const users = {
                 let userPoints = param.astronomicalPoints
                 if (takeNum === affiliatedNum) {
                     return "The total points of " + affiliatedNum + " its " + userPoints
-                } else {
-                    return "The user doesn't exist, pleate introduce a correct affiliation number."
                 }
-
             })
-            res.status(200).json(user)
+            let filtered = user.filter((param) => { return param != null })
+            if (filtered != '') {
+                res.status(200).json(filtered)
+            } else {
+                res.status(200).json("The user doesn't exist, please introduce a correct affiliation number.")
+            }
         } catch (error) {
             res.status(400).json({
                 "error": error.message
@@ -115,11 +124,8 @@ const users = {
         let takeNum = parseInt(req.params.num)
         let update = req.body
         try {
-
             const result = await Users.findOneAndUpdate({ affiliatedNumber: takeNum }, update)
             res.status(201).send(result)
-
-
         } catch (error) {
             res.status(400).json({
                 "error": error.message
@@ -140,7 +146,6 @@ const users = {
     deleteUser: async (req, res) => {
         let takeNum = parseInt(req.params.num)
         let users = await Users.find()
-        console.log(users.flat().deleted);
         try {
             users.map((param) => {
                 if (param.deleted == true) {

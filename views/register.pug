@@ -1,0 +1,25 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        style
+            include ../styles/style.css
+        title NasaApi
+    body 
+        p=msj
+        br
+        h2(class='errMsj')=errMsj
+        form(method='post', action='register')
+            label(for='name') Introduce un nombre:
+            input(type='text', name='name', placeholder='Jhon')
+            label(for='nickname') Introduce un nickname
+            input(type='text', name='nickname', placeholder='Nick')
+            label(for='occupation') Introduce tu ocupacion
+            input(type='text', name='occupation', placeholder='Nurse')
+            label(for='birthdate') Introduce tu fecha de cumpleaños
+            input(type='text', name='birthdate', placeholder='01/01/1111')
+            label(for='affiliatedNumber') Introduce un numero de afiliacion
+            input(type='text', name='affiliatedNumber', placeholder='00000')
+            input(type='submit', placeholder='Enviar')
