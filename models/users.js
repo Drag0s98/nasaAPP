@@ -15,7 +15,10 @@ let userSchema = new mongoose.Schema({
         type: Date,
         default: Date.now()
     },
-    occupation: String,
+    occupation: {
+        type: String,
+        default: undefined
+    },
     birthdate: Date,
     deleted: {
         type: Boolean,

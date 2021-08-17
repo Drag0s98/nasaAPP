@@ -7,8 +7,30 @@ const Neas = require('../models/neas')
 const neas = {
     routeBase: async (req, res) => {
         try {
+            let neas;
+            let takeClass = req.query.class
+            neas = await Neas.find()
+            let selected = neas.map((param) => {
+                let getClass = param.orbit_class
+                getClass2 = getClass.toLowerCase()
+                let designation = param.designation
+                let period_yr = param.period_yr
+                if (takeClass == getClass2) {
+                    console.log("************************");
+                    return "The designation is: " + designation + " and perior year: " + period_yr
+                }
+            })
+            let filtered = selected.filter((param) => { return param != null })
+            if (filtered != "") {
+                res.status(200).json(filtered)
+            }
+        } catch (err) {
+            res.status(400).json({
+                "error": error.message
+            })
+        }
+        try {
             if (req.query.from || req.query.to) {
-
                 let from = req.query.from
                 let to = req.query.to
                 let neasFilter;
@@ -36,31 +58,6 @@ const neas = {
                 "error": error.message
             })
         }
-    },
-    byClass: async (req, res) => {
-        let neas;
-        let takeClass = req.query.class
-        console.log(takeClass);
-        try {
-            neas = await Neas.find()
-            let selected = neas.map((param) => {
-                let getClass = param.orbit_class
-                getClass = getClass.toLowerCase()
-                let designation = param.designation
-                let period_yr = param.period_yr
-                if (getClass === takeClass) {
-                    console.log("************************");
-                    return "The designation is: " + designation + " and perior year: " + period_yr
-                }
-            })
-            let filtered = selected.filter((param) => { return param != null })
-            res.status(200).json(filtered)
-        } catch (error) {
-            res.status(400).json({
-                "error": error.message
-            })
-        }
     }
-
 }
 module.exports = neas

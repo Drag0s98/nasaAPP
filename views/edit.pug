@@ -11,7 +11,7 @@ html(lang="en")
         p=msj
         br
         h2(class='errMsj')=errMsj
-        form(method='post', action='register')
+        form(method='post', action='update', class='editBox')
             label(for='name') Introduce un nombre:
             input(type='text', name='name', placeholder='Jhon')
             label(for='nickname') Introduce un nickname
@@ -20,6 +20,11 @@ html(lang="en")
             input(type='text', name='occupation', placeholder='Nurse')
             label(for='birthdate') Introduce tu fecha de cumpleaños
             input(type='text', name='birthdate', placeholder='01/01/1111')
-            label(for='affiliatedNumber') Introduce un numero de afiliacion
-            input(type='text', name='affiliatedNumber', placeholder='00000')
-            input(type='submit', placeholder='Enviar')
+            label(for='neasDiscovered') Introduce tus NEA's
+            input(type='text', name='neasDiscovered', placeholder='lorem')
+            label(for='necsDiscovered') Introduce tus NEC's
+            input(type='text', name='necsDiscovered', placeholder='ipsum')
+            label(for='astronomicalPoints') Introduce tus puntos astronomicos
+            input(type='text', name='astronomicalPoints', placeholder='37')
+            input(type='hidden', value=affNum, name='id')
+            input(type='submit', placeholder='Update')
