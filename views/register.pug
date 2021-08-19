@@ -4,22 +4,36 @@ html(lang="en")
         meta(charset="UTF-8")
         meta(http-equiv="X-UA-Compatible", content="IE=edge")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        style
-            include ../styles/style.css
+        link(rel="stylesheet" href="/styles/style.css")
+        link(rel="stylesheet" href="/styles/registerStyle.css")
+
         title NasaApi
     body 
-        p=msj
-        br
+        nav
+            h1.title
+                img(src='../img/nasaLogo.png' width='50px')
+                | App
+            ul.navBar
+                li
+                a(href='/') Home
+                li
+                a(href='https://api.nasa.gov/') Api
+                li
+                a(href='/register') Register
+                li
+                a(href='/users') Users
+                li
+                a(href='/landing') Map
         h2(class='errMsj')=errMsj
         form(method='post', action='register')
-            label(for='name') Introduce un nombre:
+            label(for='name') Fullname
             input(type='text', name='name', placeholder='Jhon')
-            label(for='nickname') Introduce un nickname
+            label(for='nickname') Username
             input(type='text', name='nickname', placeholder='Nick')
-            label(for='occupation') Introduce tu ocupacion
+            label(for='occupation') Ocupation
             input(type='text', name='occupation', placeholder='Nurse')
-            label(for='birthdate') Introduce tu fecha de cumpleaños
-            input(type='text', name='birthdate', placeholder='01/01/1111')
-            label(for='affiliatedNumber') Introduce un numero de afiliacion
-            input(type='text', name='affiliatedNumber', placeholder='00000')
-            input(type='submit', placeholder='Enviar')
+            label(for='birthdate') Birthdate
+            input(type='text', name='birthdate', placeholder='27/03/1970')
+            label(for='affiliatedNumber') Affiliation number
+            input(type='text', name='affiliatedNumber', placeholder='00000 (min 5 length) ')
+            input(type='submit', placeholder='Register', class='sendButton')

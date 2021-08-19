@@ -2,20 +2,36 @@ doctype html
 html
   head
     title NasaApp
-
+    link(rel="stylesheet" href="/styles/style.css")
+    link(rel="stylesheet" href="/styles/landingStyle.css")
     link(rel='stylesheet', href='https://unpkg.com/leaflet@1.4.0/dist/leaflet.css', integrity='sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==', crossorigin='')
     script(src='https://unpkg.com/leaflet@1.7.1/dist/leaflet.js', integrity='sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==', crossorigin='')
-
   body
+    nav
+      h1.title
+        img(src='../img/nasaLogo.png' width='50px')
+        | App
+      ul.navBar
+        li
+          a(href='/') Home
+        li
+          a(href='https://api.nasa.gov/') Api
+        li
+          a(href='/register') Register
+        li
+          a(href='/users') Users
+        li
+          a(href='/landing') Map
+        
     form(method='POST', action='landing')
         input(type='text', placeholder='1000', name='mass')
-        button(type='submit') Filtrar por peso
+        button(type='submit') Mass filter
         br
         br
         input(type='text', placeholder='L6', name='class')
-        button(type='submit') Filtrar por clase
+        button(type='submit') Class filter
     br
-    #mapid(style='width: 600px; height: 400px;')
+    #mapid
       script.
         let data = !{jsStringify(data)};
         let data2 = !{jsStringify(getClass)};
@@ -31,19 +47,19 @@ html
         if (data2 == undefined && data3 == undefined || data2.length > 0 && data3.length > 0 ){
           for(let n of data){
             var marker = L.marker([n.reclat, n.reclong]).addTo(mymap)
-            var popUpHTML = `${n.name}<br>${n.recclass}<br>${n.mass}`;
+            var popUpHTML = `Name: ${n.name}<br>Class: ${n.recclass}<br>Mass: ${n.mass}gr`;
             marker.bindPopup(popUpHTML).openPopup()
           }
         }
         else if(data3 != undefined && data3.length > 0 || data2 != undefined && data2.length > 0 ){
           for(let n of data3){
             var marker = L.marker([n.reclat, n.reclong]).addTo(mymap)
-            var popUpHTML = `${n.name}<br>${n.recclass}<br>${n.mass}gr`;
+            var popUpHTML = `Name: ${n.name}<br>Class: ${n.recclass}<br>Mass: ${n.mass}gr`;
             marker.bindPopup(popUpHTML).openPopup()
           } 
           for(let n of data2){
             var marker = L.marker([n.reclat, n.reclong]).addTo(mymap)
-            var popUpHTML = `${n.name}<br>${n.recclass}<br>${n.mass}gr`;
+            var popUpHTML = `Name: ${n.name}<br>Class: ${n.recclass}<br>Mass: ${n.mass}gr`;
             marker.bindPopup(popUpHTML).openPopup()
           } 
         }
