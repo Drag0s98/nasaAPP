@@ -23,7 +23,7 @@ const pages = {
         try {
             let data = await Landings.find()
             let byMass = req.body.mass
-            let byClass = req.body.class
+            let byClass = req.body.class.toUpperCase()
             if (byMass.length > 0 || byClass.length > 0) {
                 let getClass = await Landings.find({ recclass: byClass })
                 let getMass = await Landings.find({ mass: byMass })
@@ -100,13 +100,13 @@ const pages = {
             res.status(400).send('Ha ocurrido un error ' + error)
         }
     },
-    getUsers : async (req,res) => {
+    getUsers: async (req, res) => {
         let users
         let sumador = 0
         try {
             users = await Users.find()
             let getId = users.map((param) => {
-                return param.affiliatedNumber 
+                return param.affiliatedNumber
             })
             let name = users.map((param) => {
                 return param.name
@@ -117,46 +117,50 @@ const pages = {
     },
     edit: async (req, res) => {
         let affNum = parseInt(req.params.num_afiliacion)
-        let user = await Users.find({affiliatedNumber: affNum})
-        if(user != ''){
+        let user = await Users.find({ affiliatedNumber: affNum })
+        if (user != '') {
             res.status(200).render('edit', { affNum })
-        }else{
+        } else {
             res.status(400).send('Error')
         }
     },
-    update: async (req,res) => {
+    update: async (req, res) => {
         const id = parseInt(req.body.id)
-        var item = {
-            name: req.body.name,
-            nickname: req.body.nickname,
-            occupation: req.body.occupation,
-            birthdate: new Date(req.body.birthdate),
-            neasDiscovered: req.body.neas,
-            necsDiscovered: req.body.necs,
-            astronomicalPoints: parseInt(req.body.astronomicalPoints)
-        }
+        let body = req.body
+        function eliminarVacios(jsonx){
+            for (var clave in jsonx) {
+              if(typeof jsonx[clave] == 'string'){
+                if(jsonx[clave] == 'Vacío'||jsonx[clave] == ''){
+                  delete jsonx[clave]
+                }
+              } else if (typeof jsonx[clave] == 'object') {
+                eliminarVacios(jsonx[clave])
+              }
+            }
+          }
+          eliminarVacios(body)
         try {
-            await Users.findOneAndUpdate({ affiliatedNumber: id }, item)
+            await Users.findOneAndUpdate({ affiliatedNumber: id }, body)
             res.status(201).redirect('/users')
         } catch (error) {
             res.status(400).send(error)
         }
-    }, 
+    },
     delete: async (req, res) => {
         let id = req.body.id
-        try{
-            await Users.findOneAndDelete({ affiliatedNumber: id}, (err, docs) => {
-                if(err){
+        try {
+            await Users.findOneAndDelete({ affiliatedNumber: id }, (err, docs) => {
+                if (err) {
                     console.log(err);
-                }else{
+                } else {
                     console.log(
                         '***********Usuario borrado**********'
                     );
                     res.status(200).redirect('/users')
                 }
             })
-        }catch(err){
-            res.status(400).send({ mesasge: `Error al borrar el usuario ${err}`})
+        } catch (err) {
+            res.status(400).send({ mesasge: `Error al borrar el usuario ${err}` })
         }
     }
 }
