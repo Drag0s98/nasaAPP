@@ -4,12 +4,25 @@ html(lang="en")
         meta(charset="UTF-8")
         meta(http-equiv="X-UA-Compatible", content="IE=edge")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        style
-            include ../styles/style.css
+        meta(http-equiv='refresh', content='0; URL=/')
+        link(rel="stylesheet" href="/styles/style.css")
+        link(rel="stylesheet" href="/styles/lobyStyle.css")
         title NasaApi
     body 
-        h1=msj
-        .btnBox
-            a.btn(href='http://localhost:3000/search') Search 
-            a.btn(href='http://localhost:3000/users') Users
+        nav
+            h1.title
+                img(src='../img/nasaLogo.png' width='50px')
+                | App
+            ul.navBar
+                li
+                a(href='/') Home
+                li
+                a(href='https://api.nasa.gov/') Api
+                li
+                a(href='/register') Register
+                li
+                a(href='/users') Users
+                li
+                a(href='/landing') Map    
+        h2 ¡Sign In succesfull!
 

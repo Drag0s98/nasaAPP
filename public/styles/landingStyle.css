@@ -1,0 +1,44 @@
+@import url('https://unpkg.com/leaflet@1.4.0/dist/leaflet.css');
+
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    justify-content: space-around;
+}
+form{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+}
+form input{
+    background-color: rgba(0, 0, 0, 0.397);
+    color: rgb(139, 47, 224);
+    width: 30%;
+    height: 60px;
+    font-size: 30px;
+    border: none;
+    border-radius: 3px;
+}
+form button {
+    height: 60px;
+    background-color: rgba(190, 190, 190, 0.356);
+    color: white;
+    border-radius: 10px;
+}
+form button:hover{
+    color: rgb(139, 47, 224);
+
+}
+#mapid{
+    color: red;
+    height: 500px;
+    width: 50%;
+    position: relative;
+    top: 167px;
+}

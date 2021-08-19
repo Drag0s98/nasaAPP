@@ -3,6 +3,13 @@ const { json } = require('express');
 const Landings = require('../models/landings')
 
 const landings = {
+    base: async (req, res) => {
+        let landings = await Landings.find();
+        res.status(200).json(landings)
+        res.status(400).json({
+            "error1": error.message
+        })
+    },
     getAllLandings: async (req, res) => {
         try {
             let landings;
@@ -23,7 +30,7 @@ const landings = {
             }
         } catch (error) {
             res.status(400).json({
-                "error1": error.message
+                "error2": error.message
             })
         }
         try {
@@ -54,7 +61,7 @@ const landings = {
             }
         } catch (error) {
             res.status(400).json({
-                "error2": error.message
+                "error3": error.message
             })
         }
     },
@@ -75,7 +82,7 @@ const landings = {
             res.status(200).send(filtered)
         } catch (error) {
             res.status(400).json({
-                "error": error.message
+                "error4": error.message
             })
         }
     },
@@ -96,7 +103,7 @@ const landings = {
             res.status(200).send(filtered)
         } catch (error) {
             res.status(400).json({
-                "error": error.message
+                "error5": error.message
             })
         }
     }

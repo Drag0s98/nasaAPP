@@ -16,10 +16,13 @@ const neas = {
                 let designation = param.designation
                 let period_yr = param.period_yr
                 if (takeClass == getClass2) {
-                    console.log("************************");
                     return "The designation is: " + designation + " and perior year: " + period_yr
                 }
             })
+            console.log(req.query);
+            if(Object.keys(req.query).length === 0){
+                res.status(200).json(neas)
+            }
             let filtered = selected.filter((param) => { return param != null })
             if (filtered != "") {
                 res.status(200).json(filtered)
