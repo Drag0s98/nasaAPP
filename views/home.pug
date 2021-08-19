@@ -27,15 +27,9 @@ main
     article.infoArtc
       h3.info NasaApp - Info
       p
-        | NasaApp es una sencilla aplicación basada en NodeJs con Express que utiliza una base de datos en MongoDB y el 
-        | motor de plantilla Pug. 
-        | Esta ofrece una parte de backend la cual puedes jugar con ella y obtener diferentes datos, para ello hay que
-        | seguir los steps(recomendable una extension de JSON formater en el navegador). A este backend se le suma la 
-        | parte de Front-End donde puedes navegar por esta sencilla web en la cual encontraras: las maravillosas imagenes
-        | del dia sacadas de la Api oficial de la Nasa; un mapa con diferentes funcionalidades; un apartado para registrarte
-        | en la base de datos y tener constancia de tu visita; y finalmente un apartado de usuarios en el cual puedes editar y
-        | borrar a aquellos usuarios que te caen mal. (⌐■_■)  
-          
+        | This Backend comes also with Front-End, where you can browse this simple web in which you will encounter marvelous images of the day taken from 
+        | the official NASA api, also comes with a map of different functionalities, a section where you can register on the database and have proof of your visit and 
+        | finally an section where your users can edit and remove those users that you dont like. (⌐■_■)
   section.section2
     article.article2
       h3.steps NasaApp - Steps
@@ -43,46 +37,43 @@ main
       p
         b /api/astronomy/landings
         br
-        |             Ruta base
+        |             Base path
       p
         b /astronomy/landings?minimum_mass=200000
         br
-        |             Para obtener nombre y masa de todos aquellos meteoritos cuya masa
-        |             sea igual o superior a una masa (gr) dada
+        |             To obtain the name and mass of all those meteorites
+        |             whose mass is equal to or greater than a given mass(gr).
       p
         b /astronomy/landings/mass/200000
         br
-        |             Para obtener nombre y masa de uno o m&aacute;s meteoritos cuya masa sea la
-        |             especificada
+        |             To obtain the name and mass of one or more meteorites whose mass is specified.
       p
         b /astronomy/landings/class/L6
         br
-        |             Para obtener los nombres y clase de aquellos meteoritos cuya clase
-        |             sea la registrada
+        |             To obtain the names and class of those meteorites whose class is the registered one.
+
       p
         b /astronomy/landings?from=1960&amp;to=1990
         b /astronomy/landings?from=1960
         b /astronomy/landings?to=1990
         br
-        |             Para obtener nombre, masa y fecha de todos los meteoritos ca&iacute;dos en
-        |             determinadas fechas
+        |             To get the name, mass and date of all meteorites that fell on certain dates.
+
       h4 Nea&apos;s links
       p
         b /api/astronomy/neas
         br
-        |             Ruta base
+        |             Base path
       p
         b /astronomy/neas?class=aten
         br
-        |             Para obtener la designaci&oacute;n y el per&iacute;odo anual en base a la clase
-        |             orbital del asteroide
+        |             To obtain the designation and the annual period based on the orbital class of the asteroid.
       p
         b /astronomy/neas?from=2010&amp;to=2015
         b /astronomy/neas?from=2010
         b /astronomy/neas?to=2015
         br
-        |             Para obtener designaci&oacute;n, fecha y per&iacute;odo anual de todos los
-        |             asteroides que cumplan el filtro de fechas dadas&ZeroWidthSpace;
+        |             To obtain designation, date and annual period of all asteroids that meet the filter of given dates.
   aside
         img(src=img width='500px' height='500px' alt='')
         h3.titleImg Astronomy Picture Of the Day

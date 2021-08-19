@@ -8,6 +8,9 @@ body{
     justify-content: flex-start;
     align-items: center;
 }
+nav{
+    height: 45px;
+}
 
 table{
     display: flex;
