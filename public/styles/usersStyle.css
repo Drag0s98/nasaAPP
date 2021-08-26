@@ -8,10 +8,6 @@ body{
     justify-content: flex-start;
     align-items: center;
 }
-nav{
-    height: 45px;
-}
-
 table{
     display: flex;
     flex-direction: column;
@@ -57,6 +53,4 @@ input:hover{
     color: rgb(139, 47, 224);
     cursor: pointer;
     text-decoration: overline;
-
-
 }
