@@ -8,10 +8,6 @@ body{
     justify-content: flex-start;
     align-items: center;
 }
-nav{
-    height: 45px;
-}
-
 table{
     display: flex;
     flex-direction: column;
@@ -36,7 +32,7 @@ td{
 label{
     font-size: 30px;
 }
-a{
+.editBtn{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -57,6 +53,4 @@ input:hover{
     color: rgb(139, 47, 224);
     cursor: pointer;
     text-decoration: overline;
-
-
 }

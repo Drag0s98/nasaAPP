@@ -17,7 +17,8 @@ input{
 .submitButton{
     background-color: rgba(0, 0, 0, 0.767);
     margin-top: 50px;
-    width: 80%;
+    width: 40%;
+    margin-bottom: 10px;
 }
 .submitButton:hover{
     color: rgb(139, 47, 224);
