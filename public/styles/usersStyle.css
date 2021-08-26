@@ -33,7 +33,7 @@ td{
 label{
     font-size: 30px;
 }
-a{
+.editBtn{
     display: flex;
     align-items: center;
     justify-content: center;

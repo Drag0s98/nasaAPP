@@ -31,6 +31,6 @@ html(lang="en")
                     tr
                         td
                             label(for=val)=name[sumador++]
-                            a(href=`/edit/${val}`, class='nose') Edit
+                            a(href=`/edit/${val}`, class='editBtn') Edit
                             input(type='hidden', value=val, name='id')
                             input(type='submit', class='nose', value='Delete', id=val)
