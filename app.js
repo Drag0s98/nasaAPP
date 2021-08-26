@@ -29,6 +29,6 @@ app.get('*', (req,res) =>{
 })
 
 app.listen(port, () =>{
-    console.log(`Landings example app listening at http://localhost:${port}/api/astronomy/landings`);
-    console.log(`Nean's example app listening at http://localhost:${port}/api/astronomy/neas`);
+    console.log(`Landings example app listening at ${port}/api/astronomy/landings`);
+    console.log(`Nean's example app listening at ${port}/api/astronomy/neas`);
 })
