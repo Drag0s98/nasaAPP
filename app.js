@@ -8,6 +8,7 @@ const landingRoutes = require('./routes/landings')
 const neasRoutes = require('./routes/neas')
 const usersRoutes = require('./routes/users')
 const viewRoutes = require('./routes/views')
+const loginRouter = require('./routes/login')
 
 const app = express()
 const port = process.env.PORT
@@ -21,7 +22,7 @@ app.set('views', path.join(__dirname, './views'))
 app.use(express.json())
 app.use(express.urlencoded({ extended:false }))
 
-app.use('/', landingRoutes, neasRoutes, usersRoutes, viewRoutes)
+app.use('/', landingRoutes, neasRoutes, usersRoutes, viewRoutes, loginRouter)
 app.use('/api/astronomy', landingRoutes, neasRoutes, usersRoutes)
 
 app.get('*', (req,res) =>{

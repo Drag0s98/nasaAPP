@@ -1,0 +1,32 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  link(rel="stylesheet" href="/styles/style.css")
+  title NasaApp
+body
+    main
+        nav
+            h1.title
+            img(src='../img/nasaLogo.png' width='50px')
+            | App
+            ul.navBar
+                li
+                    a(href='/') Home
+                li
+                    a(href='https://api.nasa.gov/') Api
+                li
+                    a(href='/register') Register
+                li
+                    a(href='/users') Users
+                li
+                    a(href='/landing') Map
+        form(action='/auth' method='POST')
+            | Username: 
+            input(type='text' name='nickname')
+            br
+            |         Affiliated number 
+            input(type='password' name='affiliatedNumber')
+            br
+            input(type='submit' value='Log In')
