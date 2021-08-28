@@ -49,6 +49,7 @@ a {
 .section1 {
     margin-top: 20px;
     margin-bottom: 30px;
+    font-size: 16px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -72,7 +73,11 @@ p {
 
 .section2 {
     background-color: rgba(0, 0, 0, 0.473);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 10px;
+    font-size: 15px;
     width: 59%;
     height: 650px;
     margin-top: 10px;
