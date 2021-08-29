@@ -4,11 +4,14 @@ const Landings = require('../models/landings')
 
 const landings = {
     base: async (req, res) => {
-        let landings = await Landings.find();
-        res.status(200).json(landings)
-        res.status(400).json({
-            "error1": error.message
-        })
+        try {
+            let landings = await Landings.find();
+            res.status(200).json(landings)
+        } catch (error) {
+            res.status(400).json({
+                "error1": error.message
+            })
+        }
     },
     getAllLandings: async (req, res) => {
         try {

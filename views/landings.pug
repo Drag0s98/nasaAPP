@@ -8,22 +8,7 @@ html
     link(rel='stylesheet', href='https://unpkg.com/leaflet@1.4.0/dist/leaflet.css', integrity='sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==', crossorigin='')
     script(src='https://unpkg.com/leaflet@1.7.1/dist/leaflet.js', integrity='sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==', crossorigin='')
   body
-    nav
-      h1.title
-        img(src='../img/nasaLogo.png' width='50px')
-        | App
-      ul.navBar
-        li
-          a(href='/') Home
-        li
-          a(href='https://api.nasa.gov/') Api
-        li
-          a(href='/register') Register
-        li
-          a(href='/users') Users
-        li
-          a(href='/landing') Map
-        
+    include ./nav.pug
     form(method='POST', action='landing')
         input(type='text', placeholder='1000', name='mass')
         button(type='submit') Mass filter

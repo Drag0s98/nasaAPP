@@ -3,6 +3,9 @@ require('dotenv').config()
 require('./utils/db')
 const process = require('process')
 const path = require('path')
+const cookieParser = require('cookie-parser')
+const flash = require('connect-flash')
+const session = require('express-session')
 
 const landingRoutes = require('./routes/landings')
 const neasRoutes = require('./routes/neas')
@@ -13,14 +16,19 @@ const loginRouter = require('./routes/login')
 const app = express()
 const port = process.env.PORT
 
-app.use(express.static('public'))
-
-
 app.set('view engine', 'pug')
 app.set('views', path.join(__dirname, './views'))
 
 app.use(express.json())
 app.use(express.urlencoded({ extended:false }))
+app.use(express.static('public'))
+app.use(cookieParser())
+app.use(session({
+    secret: 'secret',
+    resave: true,
+    saveUninitialized: true
+}))
+app.use(flash())
 
 app.use('/', landingRoutes, neasRoutes, usersRoutes, viewRoutes, loginRouter)
 app.use('/api/astronomy', landingRoutes, neasRoutes, usersRoutes)

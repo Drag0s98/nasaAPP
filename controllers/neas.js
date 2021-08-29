@@ -2,8 +2,6 @@ const { parse } = require('dotenv');
 const { json } = require('express');
 const Neas = require('../models/neas')
 
-
-
 const neas = {
     routeBase: async (req, res) => {
         try {
