@@ -1,0 +1,39 @@
+body{
+    overflow-y: hidden;
+
+}
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+section{
+    background-color: rgba(0, 0, 0, 0.473);
+    position: absolute;
+    width: 700px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 40px;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+article{
+    margin: 10px;
+}
+.button{
+    width: 200px;
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0.746);
+    color: white;
+}
+.button:hover{
+    color: rgb(139, 47, 224);
+}

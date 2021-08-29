@@ -7,21 +7,8 @@ head
   link(rel="shortcut icon" href="../img/nasaLogo.png")
   title NasaApp
 main
-  nav
-    h1.title
-      img(src='../img/nasaLogo.png' width='50px')
-      | App
-    ul.navBar
-      li
-        a(href='/') Home
-      li
-        a(href='https://api.nasa.gov/') Api
-      li
-        a(href='/register') Register
-      li
-        a(href='/users') Users
-      li
-        a(href='/landing') Map
+  include ./nav.pug
+
   section.section1
     article.infoArtc
       h3.info NasaApp - Info

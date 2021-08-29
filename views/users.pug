@@ -9,21 +9,7 @@ html(lang="en")
         link(rel="shortcut icon" href="../img/nasaLogo.png")
         title NasaApi
     body 
-        nav
-            h1.title
-            img(src='../img/nasaLogo.png' width='50px')
-            | App
-            ul.navBar
-                li
-                    a(href='/') Home
-                li
-                    a(href='https://api.nasa.gov/') Api
-                li
-                    a(href='/register') Register
-                li
-                    a(href='/users') Users
-                li
-                    a(href='/landing') Map
+        include ./nav.pug
         table  
             each val in getId
 

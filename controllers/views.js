@@ -77,6 +77,7 @@ const pages = {
     postSearch: async (req, res) => {
         let affNum = parseInt(req.body.affNum)
         let users
+        let emptyMsj = 'Introduce a Affiliated Numbre'
         try {
             users = await Users.find()
             let getUsers = users.map((param) => {
@@ -87,15 +88,19 @@ const pages = {
             })
             let filtered = getUsers.filter((param) => { return param != null })
             let array = filtered.flat()
-            let name = array[0]
-            let nickname = array[1]
-            let ocupation = array[2]
-            let birthdate = array[3]
-            let points = array[4]
-            let neas = array[5]
-            let necs = array[6]
-            let affDate = array[7]
-            res.status(200).render('search', { name, nickname, ocupation, birthdate, points, neas, necs, affDate })
+            let name = 'Name: ' + array[0]
+            let nickname = 'Nickname: ' + array[1]
+            let ocupation = 'Ocupation: ' + array[2]
+            let birthdate = 'Birthdate: ' + array[3]
+            let points = 'Points: ' + array[4]
+            let neas = 'Neas: ' + array[5]
+            let necs = 'Necs: ' + array[6]
+            let affDate = 'Affiliation Date: ' + array[7]
+            if(array[7] != undefined){
+                res.status(200).render('search', { name, nickname, ocupation, birthdate, points, neas, necs, affDate })
+            }else{
+                res.status(200).render('search', {emptyMsj})
+            }
         } catch (error) {
             res.status(400).send('Ha ocurrido un error ' + error)
         }
@@ -127,18 +132,18 @@ const pages = {
     update: async (req, res) => {
         const id = parseInt(req.body.id)
         let body = req.body
-        function eliminarVacios(jsonx){
+        function eliminarVacios(jsonx) {
             for (var clave in jsonx) {
-              if(typeof jsonx[clave] == 'string'){
-                if(jsonx[clave] == 'Vacío'||jsonx[clave] == ''){
-                  delete jsonx[clave]
+                if (typeof jsonx[clave] == 'string') {
+                    if (jsonx[clave] == 'Vacío' || jsonx[clave] == '') {
+                        delete jsonx[clave]
+                    }
+                } else if (typeof jsonx[clave] == 'object') {
+                    eliminarVacios(jsonx[clave])
                 }
-              } else if (typeof jsonx[clave] == 'object') {
-                eliminarVacios(jsonx[clave])
-              }
             }
-          }
-          eliminarVacios(body)
+        }
+        eliminarVacios(body)
         try {
             await Users.findOneAndUpdate({ affiliatedNumber: id }, body)
             res.status(201).redirect('/users')
