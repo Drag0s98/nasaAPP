@@ -10,16 +10,16 @@ html(lang="en")
         title NasaApi
     body 
         include ./nav.pug
-        h2(class='errMsj')=errMsj
         form(method='post', action='register')
             label(for='name') Fullname
-            input(type='text', name='name', placeholder='Jhon')
+            input(type='text', name='name', placeholder='John')
             label(for='nickname') Username
             input(type='text', name='nickname', placeholder='Nick')
             label(for='occupation') Ocupation
             input(type='text', name='occupation', placeholder='Nurse')
             label(for='birthdate') Birthdate
-            input(type='text', name='birthdate', placeholder='27/03/1970')
+            input(type='text', name='birthdate', placeholder='03/26/1970')
             label(for='affiliatedNumber') Affiliation number
             input(type='text', name='affiliatedNumber', placeholder='00000 (min 5 length) ')
-            input(type='submit', placeholder='Register', class='sendButton')
+            input(type='submit', value='Register', placeholder='Register', class='sendButton')
+            p(class='errMsj')=errMsj

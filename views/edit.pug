@@ -15,13 +15,13 @@ html(lang="en")
         h2(class='errMsj')=errMsj
         form(method='post', action='update', class='editBox')
             label(for='name') Change Name
-            input(type='text', name='name', placeholder='Jhon')
+            input(type='text', name='name', placeholder='John')
             label(for='nickname') Change username
             input(type='text', name='nickname', placeholder='Nick')
             label(for='occupation') Change ocupation
             input(type='text', name='occupation', placeholder='Nurse')
             label(for='birthdate') Change birthdate
-            input(type='text', name='birthdate', placeholder='01/01/1111')
+            input(type='text', name='birthdate', placeholder='01/30/1953')
             label(for='neasDiscovered') Introduce NEA's
             input(type='text', name='neasDiscovered', placeholder='lorem')
             label(for='necsDiscovered') Introduce NEC's
@@ -29,4 +29,4 @@ html(lang="en")
             label(for='astronomicalPoints') Introduce Astronomical Points
             input(type='text', name='astronomicalPoints', placeholder='37')
             input(type='hidden', value=affNum, name='id')
-            input(type='submit', placeholder='Update', class='submitButton')
+            input(type='submit', value='Update' ,placeholder='Update', class='submitButton')

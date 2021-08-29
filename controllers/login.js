@@ -15,6 +15,9 @@ const login = {
                 const accessToken = generateAccessToken(user)
                 req.flash('name', nickname)
                 res.cookie('token', accessToken).redirect('/')
+            } else {
+                let errMsj = 'Invalid Log In, try again'
+                res.status(400).render('login', { errMsj })
             }
             function generateAccessToken(user) {
                 return jwt.sign(user, process.env.SECRET, { expiresIn: '5m' })
