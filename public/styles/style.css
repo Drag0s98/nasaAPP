@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
 * {
-    margin: 0;
+    margin: 0%;
+    padding: 0%;
     font-family: 'Space Mono', monospace;
+    overflow-x: hidden;
 }
 
 body {
@@ -11,7 +13,16 @@ body {
     background-attachment: fixed;
     background-position: center;
     color: white;
+    width: 100% !important;
+    height: 100%;
 }
+main{
+    display: flex;
+    flex-direction: column;
+    width: 100% !important;
+    height: 100%;
+}
+
 nav {
     background-color: rgb(0, 0, 0);
     display: flex;
@@ -26,24 +37,29 @@ nav {
     color: white;
     margin: 0;
     font-size: 20px;
-    margin-left: 30px;
+    margin-left: 5px;
+    width: 30%;
+}
+ul{
+    width: 70%;
 }
 
 .navBar {
     display: flex;
     width: 100%;
     justify-content: flex-end;
-    margin-right: 30px;
+    margin-right: 5px;
 }
 
 li {
-    margin: 10px;
+    margin: 5px;
     list-style: none;
 }
 
 a {
     text-decoration: none;
     color: white;
+    font-size: 9px;
 }
 
 .section1 {
@@ -78,11 +94,8 @@ p {
     align-items: center;
     border-radius: 10px;
     font-size: 15px;
-    width: 59%;
-    height: 650px;
+    width: 100%;
     margin-top: 10px;
-    margin-left: 20px;
-    float: left;
 }
 
 .steps {
@@ -104,7 +117,7 @@ h4 {
 aside {
     background-color: rgba(0, 0, 0, 0.473);
     border-radius: 10px;
-    width: 37%;
+    width: 100%;
     height: 650px;
     float: right;
     margin-top: 10px;
@@ -117,7 +130,7 @@ aside {
 
 .titleImg {
     margin: 10px;
-    font-size: 30px;
+    font-size: 20px;
 }
 a:hover{
     color: rgb(139, 47, 224);

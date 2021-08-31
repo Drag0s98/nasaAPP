@@ -1,17 +1,13 @@
-body{
-    overflow-y: hidden;
-
-}
 main{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 80vh;
 }
 section{
     background-color: rgba(0, 0, 0, 0.473);
     position: absolute;
-    width: 700px;
+    width: 300px;
     height: 300px;
     display: flex;
     flex-direction: column;
